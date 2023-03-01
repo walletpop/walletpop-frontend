@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.center{
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  display: table;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.pagination{
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
