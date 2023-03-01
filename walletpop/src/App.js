@@ -6,6 +6,7 @@ import Signin from './components/Signin';
 import Signout from './components/Signout';
 import Personal from './components/Personal';
 import NoPage from './components/NoPage';
+import DetailsItem from './components/DetailsItem';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
           <Route path="signin" element={<Signin />} />
+          <Route path="/item/:id" element={<DetailsItem/>}/>
           <Route path="signout" element={<Signout />} />
           <Route path="personal" element={<Personal />} />
           <Route path="*" element={<NoPage />} />
