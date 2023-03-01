@@ -25,7 +25,7 @@ export default function Home() {
     ];
 
     useEffect(() => {
-        fetch("http://localhost:3000/items/pagination?page="+ page)
+        fetch("http://localhost:3000/items/pagination?page="+ page + '&pageSize=1')
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -56,6 +56,7 @@ export default function Home() {
             <HomePagination
                 page={page}
                 totalPages={totalPages}
+                setPage={setPage}
             />
         </div>
     </>

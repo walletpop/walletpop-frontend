@@ -14,7 +14,7 @@ function Item(props) {
       <Card.Img style={{maxWidth: "fit-content"}} variant="top" src={props.url} />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text>Created: {formatteDate(props.created)}</Card.Text>
+        <Card.Text><b>Created:</b> {formatteDate(props.created)}</Card.Text>
         <Card.Text>
           {props.description}
         </Card.Text>
