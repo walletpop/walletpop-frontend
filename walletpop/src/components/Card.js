@@ -16,6 +16,7 @@ function Item(props) {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text><b>Created:</b> {formatteDate(props.created)}</Card.Text>
+        {props.showDateSold ?  <Card.Text><b>Date sold:</b> {formatteDate(props.dateSold)}</Card.Text> : null}
         {props.showPrice ?  <Card.Text><b>Price:</b> {props.price}</Card.Text> : null}
         <Card.Text>
           {props.description}
