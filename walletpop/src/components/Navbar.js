@@ -26,20 +26,6 @@ const Navbar = () => {
         </Nav.Link>
       </Nav.Item>
     </Nav>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/signin">Signin</Link>
-          </li>
-          <li>
-            <Link to="/contact">Signout</Link>
-          </li>
-        </ul>
-      </nav> */}
-
       <Outlet />
     </>
   )
