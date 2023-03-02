@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/Navbar';
 import Home from './components/Home';
+import Register from "./components/Register";
 import Signin from './components/Signin';
 import Signout from './components/Signout';
 import Personal from './components/Personal';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
+          <Route path="register" element={<Register />} />
           <Route path="signin" element={<Signin />} />
           <Route path="/item/:id" element={<DetailsItem/>}/>
           <Route path="signout" element={<Signout />} />
