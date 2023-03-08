@@ -3,6 +3,7 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
+
 async function registerUser(userObj) {
   try {
     return await fetchData("/register", "POST", userObj);
@@ -24,10 +25,11 @@ async function signIn(userObj) {
 
 async function signOut(userObj){
   try {
-    await fetchData("/signout", "POST", userObj);
-    cookies.remove('userId');
-    cookies.remove('token');
-
+    if(cookies.get('token')){
+      cookies.remove('userId');
+      cookies.remove('token');
+      await fetchData("/signout", "POST", userObj);
+    }
   } catch (e) {
     console.log(e);
   }
