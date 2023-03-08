@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import {getRandomUrl} from './Common';
 
 export default function Personal() {
+
     const [itemsSelling, setItemsSelling] = useState([]);
     const [itemsBought, setItemsBought] = useState([]);
 
