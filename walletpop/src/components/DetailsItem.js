@@ -1,20 +1,32 @@
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Card from './Card';
 import {getRandomUrl} from './Common';
 
-  export default function DetailsItem() {
+export default function DetailsItem() {
 
     const [item, setItem] = useState({});
-    const [url, setUrl] = useState(getRandomUrl());
-    let {id}  = useParams();
+    const [url] = useState(getRandomUrl());
+    const { id } = useParams();
 
-    function buy(){
-        window.alert("you bought this!");
+    const navigate = useNavigate();
+
+    function buy() {
+        fetch(`http://localhost:3000/sold`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            credentials: "include",
+            body: JSON.stringify({ itemId: id })
+        }).then(() => {
+            navigate("/");
+        });
     }
 
     useEffect(() => {
-        fetch("http://localhost:3000/" + id)
+        fetch("http://localhost:3000/items/" + id)
         .then(res => res.json())
         .then(data => {
             setItem(data);
@@ -36,4 +48,4 @@ import {getRandomUrl} from './Common';
             link={buy}
         />
     </div>)
-  }
+}

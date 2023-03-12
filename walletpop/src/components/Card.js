@@ -21,7 +21,7 @@ function Item(props) {
         <Card.Text>
           {props.description}
         </Card.Text>
-        <Link to={props.link ? null : `/item/${props.id}`} >
+        <Link to={props.link ? null : `/items/${props.id}`} >
           <Button onClick={props.link ? props.link : null} variant="primary">{props.buttonText ? props.buttonText : 'Buy it'}</Button>
         </Link>
       </Card.Body>
