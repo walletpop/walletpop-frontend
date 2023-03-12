@@ -1,6 +1,7 @@
 import Card from './Card';
 import { useState, useEffect } from 'react';
 import {getRandomUrl} from './Common';
+import fetchData from '../utils/fetchData';
 
 export default function Personal() {
 
@@ -15,18 +16,28 @@ export default function Personal() {
 
         if (userId) {
             Promise.all([
-                fetch(`http://localhost:3000/item/user/${userId}`),
-                fetch(`http://localhost:3000/sold/user/${userId}`)
+                fetch(`http://localhost:3000/items/user/${userId}`, {
+                    credentials: "include",
+                }),
+                fetch(`http://localhost:3000/sold`, {
+                    credentials: "include",
+                })
             ])
-            .then(([responseSelling, responseBought]) =>
-                Promise.all([responseSelling.json(), responseBought.json()])
-            )
-            .then(([dataSelling, dataBought]) => {
-                setItemsSelling(dataSelling);
-                setItemsBought(dataBought);
-            }, []);
+                .then(([responseSelling, responseBought]) =>
+                    Promise.all([responseSelling.json(), responseBought.json()])
+                )
+                .then(async ([dataSelling, dataBought]) => {
+                    setItemsSelling(dataSelling);
+
+                    dataBought = await Promise.all(dataBought.map(async (item) => {
+                        item.item = await fetchData(`/items/${item.itemId}`, "GET", undefined);
+                        return item;
+                    }));
+
+                    setItemsBought(dataBought);
+                }, []);
         }
-    });
+    }, []);
 
     return <>
         <h1 style={{textAlign: 'center'}}>My Walletpop</h1>

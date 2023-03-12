@@ -14,7 +14,6 @@ const Navbar = () => {
   const [isUserLoggedIn, setIsUsserLoggedIn] = useState(false);
 
   useEffect(() => {
-    console.log(token);
     if(token){
       setIsUsserLoggedIn(true);
     } else{
@@ -32,30 +31,23 @@ const Navbar = () => {
     <>
     <Nav>
       <Nav.Item>
-      <Nav.Link eventKey="home">
-      <Link to="/">Home</Link>
-      </Nav.Link>
+      <Nav.Link eventKey="home" as={ Link } to="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-      <Nav.Link eventKey="register">
-      <Link to="/register">Register</Link>
-      </Nav.Link>
+      <Nav.Link eventKey="register" as={ Link } to="/register">Register</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-      <Nav.Link eventKey="signin">
-      <Link to="/signin">Signin</Link>
-      </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-      {isUserLoggedIn && <Nav.Link eventKey="personal">
-        <Link to="/signout" onClick={signOutUser}>Signout</Link>
-      </Nav.Link>}
+      <Nav.Link eventKey="signin" as={ Link } to="/signin">Signin</Nav.Link>
       </Nav.Item>
       <Nav.Item>
       {isUserLoggedIn &&
-        <Nav.Link eventKey="personal">
-            <Link to="/personal">Personal</Link>
-        </Nav.Link>}
+        <Nav.Link eventKey="personal" as={ Link } to="/signout" onClick={signOutUser}>Signout</Nav.Link>
+      }
+      </Nav.Item>
+      <Nav.Item>
+      {isUserLoggedIn &&
+        <Nav.Link eventKey="personal" as={ Link } to="/personal">Personal</Nav.Link>
+      }
       </Nav.Item>
     </Nav>
       <Outlet />

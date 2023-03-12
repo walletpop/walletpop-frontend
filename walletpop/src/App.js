@@ -17,8 +17,8 @@ function App() {
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
           <Route path="register" element={<Register />} />
-          <Route path="signin" element={<Register />} />
-          <Route path="/item/:id" element={<DetailsItem/>}/>
+          <Route path="signin" element={<Signin />} />
+          <Route path="/items/:id" element={<DetailsItem/>}/>
           <Route path="signout" element={<Signout />} />
           <Route path="personal" element={<Personal />} />
           <Route path="*" element={<NoPage />} />
